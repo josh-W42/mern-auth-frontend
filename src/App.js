@@ -9,6 +9,7 @@ import './App.css';
 
 // Components
 import Signup from './components/Signup';
+import Login from './components/Login';
 
 function App() {
   // Set state values
@@ -20,7 +21,6 @@ function App() {
   return (
     <div className="App">
       <h1>MERN Authentication</h1>
-      <Signup />
     </div>
   );
 }

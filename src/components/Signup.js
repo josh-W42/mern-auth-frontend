@@ -65,11 +65,11 @@ const Signup = () => {
                         </div>
                         <div className="form-group mb-3">
                             <label htmlFor="password">Password</label>
-                            <input type="text" name="password" value={password} onChange={handlePassword} className="form-control" />
+                            <input type="password" name="password" value={password} onChange={handlePassword} className="form-control" />
                         </div>
                         <div className="form-group mb-3">
                             <label htmlFor="confirmPassword">Confirm Password</label>
-                            <input type="text" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPassword} className="form-control" />
+                            <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPassword} className="form-control" />
                         </div>
                         <div className="form-group mb-3">
                             <button type="submit" className="btn btn-primary float-right"> Submit</button>
