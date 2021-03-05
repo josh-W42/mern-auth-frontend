@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 const { REACT_APP_SERVER_URL } = process.env;
 
-const Signup = () => {
+const Signup = (props) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,12 +18,11 @@ const Signup = () => {
         e.preventDefault();
 
         if (password !== confirmPassword) return alert('Passwords don\'t match');
-        if (password.length >= 8) return alert('Password has to be at least 8 characters.');
+        if (password.length <= 8) return alert('Password has to be at least 8 characters.');
 
         const newUser = { name, email, password };
         try {
             const response = await axios.post(`${REACT_APP_SERVER_URL}/users/register`, newUser);
-            console.log(response);
             setRedirect(true);
         } catch (error) {
             console.error(error);
@@ -57,19 +56,19 @@ const Signup = () => {
                     <form onSubmit={handleSubmit}>
                         <div className="form-group mb-3">
                             <label htmlFor="name" >Name</label>
-                            <input type="text" name="name" value={name} onChange={handleName} className="form-control" />
+                            <input type="text" name="name" value={name} onChange={handleName} required className="form-control" />
                         </div>
                         <div className="form-group mb-3">
                             <label htmlFor="email">Email</label>
-                            <input type="text" name="email" value={email} onChange={handleEmail} className="form-control" />
+                            <input type="email" name="email" value={email} onChange={handleEmail} required className="form-control" />
                         </div>
                         <div className="form-group mb-3">
                             <label htmlFor="password">Password</label>
-                            <input type="password" name="password" value={password} onChange={handlePassword} className="form-control" />
+                            <input type="password" name="password" value={password} onChange={handlePassword} required className="form-control" />
                         </div>
                         <div className="form-group mb-3">
                             <label htmlFor="confirmPassword">Confirm Password</label>
-                            <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPassword} className="form-control" />
+                            <input type="password" name="confirmPassword" value={confirmPassword} required onChange={handleConfirmPassword} className="form-control" />
                         </div>
                         <div className="form-group mb-3">
                             <button type="submit" className="btn btn-primary float-right"> Submit</button>

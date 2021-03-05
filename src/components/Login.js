@@ -46,7 +46,7 @@ const Login = (props) => {
         }
     }
 
-    props.user ? <Redirect to="/profile" /> : <Redirect to="/login" />
+    if (props.user) return <Redirect to="/profile" />;
 
     return (
         <div className="row mt-4">
@@ -60,6 +60,7 @@ const Login = (props) => {
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" value={password} onChange={handlePassword} className="form-control" />
                 </div>
+                <button type="submit" className="btn btn-primary">Login</button>
             </form>
         </div>
     )

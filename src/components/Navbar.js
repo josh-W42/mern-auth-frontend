@@ -17,8 +17,30 @@ const Navbar = (props) => {
                         <li className="nav-item">
                             <NavLink className="nav-link"  to="/about">About</NavLink>
                         </li>
+                    {   // Now we'll add in the part of the navbar for when a user is vs isn't logged in.
+                        props.isAuth ? 
+                        (
+                            <>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/profile">Profile</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <span className="nav-link logut-link" onClick={props.handleLogout}>Logout</span>
+                                </li>
+                            </>
+                        ) : 
+                        (
+                            <>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="/signup">Signup</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to='/login'>Login</NavLink>
+                                </li>
+                            </>
+                        )
+                    }
                     </ul>
-                    {/* {Add code here} */}
                 </div>
             </div>
         </nav>
